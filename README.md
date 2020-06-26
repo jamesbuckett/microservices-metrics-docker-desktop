@@ -1,5 +1,9 @@
 # A Tutorial on Microservices and Observability on Docker for Desktop 
 
+```diff
+- This is a work in progress and not complete -
+```
+
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
 ## Disclaimer
