@@ -19,7 +19,6 @@
 * Install Octant
 * Install Online Boutique
 * Install Loki
-* Install Prometheus
 * Check Online Boutique logs with Loki
 * Check Online Boutique metrics with Prometheus
 
@@ -30,7 +29,7 @@
 
 ## 2. Install Tools 
 
-### 2.1 Install Helm 
+### 2.1 Helm 
 
 ```
 cd ~/ && mkdir helm-3 && cd helm-3
@@ -40,17 +39,20 @@ mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-### 2.2 Install Octant 
+### 2.2 Octant 
 
 Install Octant as per your [platform](https://github.com/vmware-tanzu/octant).
 
-## 3. Install Online Boutique
+## 3. Online Boutique
 
 Create a Online Boutique namespace: `kubectl create namespace microservices-demo`
 
+Install Online Boutique
+```
+kubectl apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
+```
 
-
-## 4. Install Loki
+## 4. Loki
 
 Create a loki namespace: `kubectl create ns loki`
 
@@ -58,3 +60,9 @@ Add the Loki helm repo: `helm repo add loki https://grafana.github.io/loki/chart
 
 Update the Loki helm repo: `helm repo update`
 
+Install Loki: 
+```
+helm upgrade --install loki loki/loki-stack -f  "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/values.yaml" -n loki
+```
+
+## 5. Grafana
