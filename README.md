@@ -49,7 +49,7 @@ Create a Online Boutique namespace: `kubectl create namespace microservices-demo
 
 Install Online Boutique
 ```
-kubectl apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
+kubectl apply -n microservices-demo -f "https://github.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
 ```
 
 ## 4. Loki
