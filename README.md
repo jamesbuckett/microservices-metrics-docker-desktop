@@ -53,7 +53,7 @@ Create a Online Boutique namespace: `kubectl create namespace microservices-demo
 
 Install Online Boutique
 ```
-kubectl apply -n microservices-demo -f "https://github.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
+kubectl apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
 ```
 
 ## 4. Loki
@@ -70,3 +70,34 @@ helm upgrade --install loki loki/loki-stack -f  "https://raw.githubusercontent.c
 ```
 
 ## 5. Grafana
+
+Start Octant 
+
+Navigate to `loki` namespace
+
+Navigate to Workloads...Pods
+
+Select the `loki-grafan-xxxxxxxxxxxxxxxx` pod
+
+Navigate down to Container grafana
+
+Under `Container Ports` select: Container Ports...`3000/TCP`...`Start Port Forward`
+
+Click on the hyperlink.
+
+Obtain the password: `kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
+
+Username: `admin`
+Password: Value obtained in command above
+
+## 6. Dashboards
+
+Import this dashboard: `12019`
+
+Import this dashboard: `10000`
+
+Import this dashbaord: `1471`
+
+
+*End of Section*
+
