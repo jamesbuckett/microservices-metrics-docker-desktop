@@ -46,3 +46,15 @@ Install Octant as per your [platform](https://github.com/vmware-tanzu/octant).
 
 ## 3. Install Online Boutique
 
+Create a Online Boutique namespace: `kubectl create namespace microservices-demo`
+
+
+
+## 4. Install Loki
+
+Create a loki namespace: `kubectl create ns loki`
+
+Add the Loki helm repo: `helm repo add loki https://grafana.github.io/loki/charts`
+
+Update the Loki helm repo: `helm repo update`
+
