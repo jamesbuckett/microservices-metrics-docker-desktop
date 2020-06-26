@@ -98,6 +98,54 @@ Import this dashboard: `10000`
 
 Import this dashbaord: `1471`
 
+## 7. Theory
+
+### 7.1 Loki 
+
+Log Analysis Use Cases
+* Debugging and troubleshooting
+* Monitoring
+* Cybersecurity
+* Compliance
+* Business intelligence
+
+Challanges operating traditional Log Management tools
+* Hard to operate at scale at petabyte-scale with full-text search index
+* Expensive in human, infrastructure and licencing costs
+* Do not correlate well with Prometheus metrics
+
+Loki differences
+* Loki only indexes the metadata
+
+Log line example from a web server : 
+```
+10.185.248.71 - - [09/Jan/2015:19:12:06 +0000] 808840 "GET /inventoryService/purchaseItem?userId=20253471&amp;itemId=23434300 HTTP/1.1" 500 17 "-" "Apache-HttpClient/4.2.6 (java 1.5)"
+```
+
+Elasticsearch Index
+```
+Timestamp     = 09/Jan/2015:19:12:06 +0000
+Client_ip     = 10.185.248.71
+URI           = /inventoryService/purchaseItem
+UserId        = 20253471
+itemId        = 23434300 
+Method        = GET
+Size          = 808840
+Duration      = 17
+HTTPStatus    = 500
+Protocol      = HTTP/1.1
+Agent         = Apache-HttpClient/4.2.6 (java 1.5)
+Msg           = “10.185.248.71 - - [09/Jan/2015:19:12:06 +0000] 808840 "GET /inventoryService/purchaseItem?userId=20253471&amp;itemId=23434300 HTTP/1.1" 500 17 "-" "Apache-HttpClient/4.2.6 (java 1.5)”
+```
+
+Loki Index
+```
+Timestamp     = 09/Jan/2015:19:12:06 +0000
+Method        = GET
+HTTPStatus    = 500
+```
+
+The smaller index size makes Loki more scalable.
 
 *End of Section*
 
