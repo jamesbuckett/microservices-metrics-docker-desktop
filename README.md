@@ -11,35 +11,38 @@
 1. Introduction
 * 1.1 Agenda
 * 1.2 Requirements
-2. Docker Desktop 
-* 2.1 What is Digital Ocean?
-
 
 ## 1. Introduction
 
 ### 1.1 Agenda
-* Deploy a Ubuntu jump host on Digital Ocean with SSH access
-* Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
-* Deploy Loki for distributed logging on the cluster
-* Deploy the Online Boutique micro-services application onto the Kubernetes cluster on Digital Ocean
-* Verify operation of the Online Boutique micro-service
-* Observe the Online Boutique micro-service with the Observability software
-* Perform Chaos Engineering on the Online Boutique micro-service
+* Install Helm
+* Install Octant
+* Install Online Boutique
+* Install Loki
+* Install Prometheus
+* Check Online Boutique logs with Loki
+* Check Online Boutique metrics with Prometheus
+
 
 ### 1.2 Requirements
-* 1.2.1 A Digital Ocean Account
-  * A credit card or debit card is required to sign up to Digital Ocean
-  * The Referral Link provided gives $100 credit for 60 days to offset the cost of this tutorial 
-* 1.2.2 A Terminal Emulator to interact with the cluster
-  * If using Windows 10 please install the following software:
-    * [PuTTY](https://www.putty.org/) 
-    * [PuTTYgen](https://www.puttygen.com/)
-    * [WinSCP](https://winscp.net/eng/download.php)
-  * Mac  
-    * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
+* A terminal shell 
+* Docker for Desktop installed and working
 
+## 2. Install Tools 
 
+### 2.1 Install Helm 
 
+```
+cd ~/ && mkdir helm-3 && cd helm-3
+wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
 
+### 2.2 Install Octant 
 
-## 2. Digital Ocean - Cloud Provider
+Install Octant as per your [platform](https://github.com/vmware-tanzu/octant).
+
+## 3. Install Online Boutique
+
