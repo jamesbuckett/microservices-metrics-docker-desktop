@@ -64,6 +64,8 @@ kubectl apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesb
 
 ## 4. Loki
 
+Details on the [Loki Helm Chart](https://grafana.github.io/loki/charts/)
+
 Create a loki namespace: `kubectl create ns loki`
 
 Add the Loki helm repo: `helm repo add loki https://grafana.github.io/loki/charts`
@@ -115,6 +117,8 @@ Cluster Monitoring for Kubernetes
 
 What is [Loki](https://grafana.com/oss/loki/)?
 
+Content derived from [here](https://grafana.com/blog/2020/05/12/an-only-slightly-technical-introduction-to-loki-the-prometheus-inspired-open-source-logging-system/)
+
 Log Analysis Use Cases
 * Debugging and troubleshooting
     * Why did my application crash
@@ -162,7 +166,30 @@ Method        = GET
 HTTPStatus    = 500
 ```
 
-The smaller index size makes Loki more scalable.
+Loki only indexes a *few low cardinality fields upfront*, so the Loki *index is very small*. 
+
+We can query the logs by filtering them by *time range and indexed fields* (called labels in Loki)  and then scanning the remaining set of log lines using substring search or with regular expressions. 
+
+This turns out to be more efficient in the long run and perfectly *suitable for the debug and troubleshooting* use case where you need to find a needle in the proverbial haystack and correlate your Prometheus metrics with your logs.
+
+### 7.1 Loki  Labels 
+
+Content derived from [here](https://grafana.com/blog/2020/04/21/how-labels-in-loki-can-make-log-queries-faster-and-easier/)
+
+Labels are *key value pairs* and can be defined as anything! 
+
+We like to refer to them as metadata to describe a log stream. 
+
+If you are familiar with Prometheus, there are a few labels you are used to seeing like `job` and `instance`, and I will use those in the coming examples.
+
+Labels in Loki perform a very important task. 
+
+They define a stream. 
+
+More specifically, the combination of every label key and value defines the stream.
+
+
+
 
 *End of Section*
 
