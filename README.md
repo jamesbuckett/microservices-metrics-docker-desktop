@@ -35,6 +35,8 @@
 
 ### 2.1 Helm 
 
+What is [Helm](https://helm.sh/)?
+
 ```
 cd ~/ && mkdir helm-3 && cd helm-3
 wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
@@ -45,9 +47,13 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 ### 2.2 Octant 
 
+What is [Octant](https://github.com/vmware-tanzu/octant)?
+
 Install Octant as per your [platform](https://github.com/vmware-tanzu/octant).
 
 ## 3. Online Boutique
+
+What is [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo/)?
 
 Create a Online Boutique namespace: `kubectl create namespace microservices-demo`
 
@@ -71,6 +77,8 @@ helm upgrade --install loki loki/loki-stack -f  "https://raw.githubusercontent.c
 
 ## 5. Grafana
 
+What is [Grafana](https://grafana.com/grafana/)
+
 Start Octant 
 
 Navigate to `loki` namespace
@@ -90,32 +98,41 @@ Obtain the password: `kubectl get secret --namespace loki loki-grafana -o jsonpa
 Username: `admin`
 Password: Value obtained in command above
 
-## 6. Dashboards
+## 6. Grafana Dashboards
 
-Import this dashboard: `12019`
+Loki Dashboard
+* Import this dashboard: `12019`
 
-Import this dashboard: `10000`
+Cluster Monitoring for Kubernetes
+* Import this dashboard: `10000`
 
-Import this dashbaord: `1471`
+Cluster Monitoring for Kubernetes
+* Import this dashbaord: `1471`
 
 ## 7. Theory
 
 ### 7.1 Loki 
 
+What is [Loki](https://grafana.com/oss/loki/)?
+
 Log Analysis Use Cases
 * Debugging and troubleshooting
+    * Why did my application crash
 * Monitoring
+    * Create metrics from logs
 * Cybersecurity
 * Compliance
+    * Keep Audit logs
 * Business intelligence
 
 Challanges operating traditional Log Management tools
 * Hard to operate at scale at petabyte-scale with full-text search index
 * Expensive in human, infrastructure and licencing costs
-* Do not correlate well with Prometheus metrics
+* Does not correlate well with Prometheus metrics
 
 Loki differences
-* Loki only indexes the metadata
+* Loki only indexes a small bit of metadata from every logline.
+* Loki data model and query langauge is similar to Prometheus
 
 Log line example from a web server : 
 ```
