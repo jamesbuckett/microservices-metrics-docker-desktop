@@ -26,7 +26,6 @@
 * Check Online Boutique logs with Loki
 * Check Online Boutique metrics with Prometheus
 
-
 ### 1.2 Requirements
 * A terminal shell 
 * Docker for Desktop installed and working
