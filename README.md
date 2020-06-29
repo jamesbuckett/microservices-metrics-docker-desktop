@@ -55,18 +55,18 @@ Install Octant as per your [platform](https://github.com/vmware-tanzu/octant).
 
 What is [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo/)?
 
-Create a Online Boutique namespace: `kubectl create namespace microservices-demo`
+Create a Online Boutique namespace: `kubectl create namespace ns-microservices-demo`
 
 Install Online Boutique
 ```
-kubectl apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
+kubectl apply -n ns-microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
 ```
 
 ## 4. Loki
 
 Details on the [Loki Helm Chart](https://grafana.github.io/loki/charts/)
 
-Create a loki namespace: `kubectl create ns loki`
+Create a loki namespace: `kubectl create ns ns-loki`
 
 Add the Loki helm repo: `helm repo add loki https://grafana.github.io/loki/charts`
 
@@ -74,7 +74,7 @@ Update the Loki helm repo: `helm repo update`
 
 Install Loki: 
 ```
-helm upgrade --install loki loki/loki-stack -f  "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/values.yaml" -n loki
+helm upgrade --install loki-release loki/loki-stack -f  "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/values.yaml" -n ns-loki
 ```
 
 ## 5. Grafana
@@ -83,7 +83,7 @@ What is [Grafana](https://grafana.com/grafana/)
 
 Start Octant 
 
-Navigate to `loki` namespace
+Navigate to `ns-loki` namespace
 
 Navigate to Workloads...Pods
 
@@ -95,7 +95,7 @@ Under `Container Ports` select: Container Ports...`3000/TCP`...`Start Port Forwa
 
 Click on the hyperlink.
 
-Obtain the password: `kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
+Obtain the password: `kubectl get secret --namespace ns-loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
 
 Username: `admin`
 Password: Value obtained in command above
@@ -187,9 +187,6 @@ Labels in Loki perform a very important task.
 They define a stream. 
 
 More specifically, the combination of every label key and value defines the stream.
-
-
-
 
 *End of Section*
 
