@@ -19,8 +19,7 @@
 ## 1. Introduction
 
 ### 1.1 Agenda
-* Install Helm
-* Install Octant
+* Install Tools
 * Install Online Boutique
 * Install Loki
 * Check Online Boutique logs with Loki
@@ -34,7 +33,7 @@
 
 ### 2.1 Install Tools
 
-Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following on `digital-ocean-droplet`
+Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following tools and utilities:
 * kubectl - Interact with Kubernetes cluster
 * kubectx - Change clusters
 * kubens - Change namespaces like you would directories
@@ -74,6 +73,8 @@ Details on the [Loki Helm Chart](https://grafana.github.io/loki/charts/)
 
 Create a loki namespace: `kubectl create ns ns-loki`
 
+Clear any previous references: `helm repo remove loki`
+
 Add the Loki helm repo: `helm repo add loki https://grafana.github.io/loki/charts`
 
 Update the Loki helm repo: `helm repo update`
@@ -101,7 +102,7 @@ Under `Container Ports` select: Container Ports...`3000/TCP`...`Start Port Forwa
 
 Click on the hyperlink.
 
-Obtain the password: `kubectl get secret --namespace ns-loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
+Obtain the password: `kubectl get secret --namespace ns-loki loki-release-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
 
 Username: `admin`
 Password: Value obtained in command above
