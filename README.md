@@ -32,23 +32,14 @@
 
 ## 2. Install Tools 
 
-### 2.1 Helm 
-
-What is [Helm](https://helm.sh/)?
-
-```
-cd ~/ && mkdir helm-3 && cd helm-3
-wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
-tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
-mv linux-amd64/helm /usr/local/bin/helm
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-```
-
-### 2.2 Octant 
-
-What is [Octant](https://github.com/vmware-tanzu/octant)?
-
-Install Octant as per your [platform](https://github.com/vmware-tanzu/octant).
+Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following on `digital-ocean-droplet`
+* kubectl - Interact with Kubernetes cluster
+* kubectx - Change clusters
+* kubens - Change namespaces like you would directories
+* kube-ps1 - Changes Prompt to reflect current cluster and namespace
+* helm 3 - Kubernetes package installer  
+* kubectl top - Kubernetes top command
+* Octant - Kubernetes Web User Interface
 
 ## 3. Online Boutique
 
