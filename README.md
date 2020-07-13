@@ -32,6 +32,8 @@
 
 ## 2. Install Tools 
 
+### 2.1 Install Tools
+
 Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following on `digital-ocean-droplet`
 * kubectl - Interact with Kubernetes cluster
 * kubectx - Change clusters
@@ -40,6 +42,20 @@ Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/
 * helm 3 - Kubernetes package installer  
 * kubectl top - Kubernetes top command
 * Octant - Kubernetes Web User Interface
+
+### 2.2 Install Contour Ingress
+
+What is [Countour](https://github.com/projectcontour/contour)?
+* An Ingress is an API object that manages external access to the services in a cluster, typically HTTP.
+* Ingress may provide load balancing, SSL termination and name-based virtual hosting
+* Contour is an Ingress controller for Kubernetes that works by deploying the Envoy proxy as a reverse proxy and load balancer. 
+* Contour supports dynamic configuration updates out of the box while maintaining a lightweight profile.
+
+Create a namespace for Contour: `kubectl create namespace ns-contour`
+
+```
+helm upgrade --install contour-release stable/contour --namespace ns-contour --set service.loadBalancerType=LoadBalancer
+```
 
 ## 3. Online Boutique
 
