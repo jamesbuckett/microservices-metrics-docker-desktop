@@ -67,6 +67,14 @@ Install Online Boutique
 kubectl apply -n ns-microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-docker-desktop/master/complete-demo.yaml"
 ```
 
+### metrics server - container resource metrics
+
+```
+kubectl create ns ns-metrics-server
+kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml"
+kubectl wait -n ns-metrics-server deploy metrics-server --for condition=Available --timeout=90s
+```
+
 ## 4. Loki
 
 Details on the [Loki Helm Chart](https://grafana.github.io/loki/charts/)
@@ -136,7 +144,7 @@ Log Analysis Use Cases
     * Keep Audit logs
 * Business intelligence
 
-Challanges operating traditional Log Management tools
+Challenges operating traditional Log Management tools
 * Hard to operate at scale at petabyte-scale with full-text search index
 * Expensive in human, infrastructure and licencing costs
 * Does not correlate well with Prometheus metrics

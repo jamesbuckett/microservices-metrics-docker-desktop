@@ -22,8 +22,8 @@ grafana:
       enabled: true
   image:
     tag: 7.2.2
-  service:
-    type: LoadBalancer
+  #service:
+    #type: LoadBalancer
   
 prometheus:
   enabled: true
